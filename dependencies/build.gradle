@@ -1,0 +1,11 @@
+plugins {
+    id 'java-platform'
+}
+
+javaPlatform {
+    allowDependencies()
+}
+
+dependencies {
+	api platform('org.springframework.boot:spring-boot-dependencies:3.4.1')
+}

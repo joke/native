@@ -1,0 +1,13 @@
+[_]
+schema-version = "0.2"
+id = "org.xckk.native"
+name = "native build"
+
+[io.buildpacks]
+builder = "localhost:5000/cps/cps-builder"
+
+exclude = [
+    "build/",
+    ".gradle/",
+    "helm"
+]

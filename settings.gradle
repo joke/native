@@ -1,0 +1,12 @@
+pluginManagement {
+  plugins {
+	  id 'org.springframework.boot' version '3.4.2'
+	  id 'org.graalvm.buildtools.native' version '0.10.5'
+    }
+}
+
+rootProject.name = 'native'
+
+include 'dependencies'
+include 'backend'
+include 'backend2'

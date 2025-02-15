@@ -1,0 +1,31 @@
+apiVersion: skaffold/v4beta12
+kind: Config
+metadata:
+  name: native
+
+build:
+  artifacts:
+  - image: test1
+    buildpacks:
+      trustBuilder: true
+      builder: localhost:5000/cps/cps-builder
+      env:
+      - BP_GRADLE_BUILT_MODULE=backend
+      - BP_GRADLE_ADDITIONAL_BUILD_ARGUMENTS=:backend:assemble
+      - BP_NATIVE_IMAGE=false
+  - image: test2
+    buildpacks:
+      trustBuilder: true
+      builder: localhost:5000/cps/cps-builder
+      env:
+      - BP_GRADLE_BUILT_MODULE=backend2
+      - BP_GRADLE_ADDITIONAL_BUILD_ARGUMENTS=:backend2:assemble
+      - BP_NATIVE_IMAGE=false
+deploy:
+  helm:
+    releases:
+      - name: helm
+        chartPath: helm
+        valuesFiles:
+          - helm/values.yaml
+        version: 0.1.0

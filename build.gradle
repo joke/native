@@ -1,0 +1,27 @@
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+allprojects { project ->
+	repositories {
+		mavenCentral()
+	}
+
+    tasks.withType(AbstractArchiveTask) {
+        preserveFileTimestamps = false
+        reproducibleFileOrder = true
+    }
+
+    pluginManager.withPlugin('java-base') {
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+        tasks.withType(JavaCompile) {
+            options.release = 21
+            options.compilerArgs << '-parameters' << '-Werror'
+        }
+    }	
+
+}
+
+tasks.named('wrapper') {
+	version '8.12.1'
+}
