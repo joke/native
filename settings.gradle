@@ -9,4 +9,3 @@ rootProject.name = 'native'
 
 include 'dependencies'
 include 'backend'
-include 'backend2'
