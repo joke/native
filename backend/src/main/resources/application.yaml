@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: test2
+org:
+  springframework:
+    cloud:
+      bindings:
+        boot:
+          enable: true
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          bindings: DEBUG
